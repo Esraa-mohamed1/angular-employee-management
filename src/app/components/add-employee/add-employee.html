@@ -1,0 +1,115 @@
+<!-- <h2>Add Employee</h2>
+<form #employeeForm="ngForm"
+(ngSubmit)="submit(employeeForm)">
+
+<div>
+  <label > firstname</label>
+  <input 
+  type="text"
+  name="firstname"
+  [(ngModel)]="empolyee.firstName"
+  required
+  minlength="2"
+  #firstname="ngModel"
+</div>
+
+@if(
+  firstName.invalid && firstName.touched
+)
+{<small>first Name is required and must at least 2 letters </small>}
+
+
+
+//lastname
+<div>
+  <label > lastname</label>
+  <input 
+  type="text"
+  name="lastname"
+  [(ngModel)]="empolyee.lastname"
+  required
+  minlength="2"
+  #lastname="ngModel"
+</div>
+
+@if(
+  lastname.invalid && lastname.touched
+)
+{<small>first Name is required and must at least 2 letters </small>}
+
+//email
+
+<div>
+  <label > email</label>
+  <input 
+  type="email"
+  name="email"
+  [(ngModel)]="empolyee.email"
+  required
+  email
+  #email="ngModel"
+</div>
+
+@if(
+  firstName.invalid && firstName.touched
+)
+{<small>first Name is required and must at least 2 letters </small>}
+
+
+//phone
+
+<div>
+  <label > firstname</label>
+  <input 
+  type="text"
+  name="phone"
+  [(ngModel)]="empolyee.phone"
+  required
+  pattern="^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$"
+  #phone="ngModel"
+</div>
+
+@if(
+  phone.invalid && phone.touched
+)
+{<small>first N
+  
+  ame is required and must at least 2 letters </small>}
+
+
+<button 
+type="submit"
+[disabled]="employeeForm.invalid">
+
+add Employee
+</button>
+
+
+
+
+
+</form> -->
+
+
+
+
+
+
+<h2>Add Employee</h2>
+<form [formGroup]="employeeForm"
+(ngSubmit)="submit()">
+
+
+
+<input
+type="text"
+formControllName="firstName">
+
+ @if (employeeForm.controls.firstName.invalid &&employeeForm.controls.firstName.touched)
+{<small>first Name is required and must at least 2 letters </small>}
+
+
+<button
+type="submit"
+[disabled]="employeeForm.invalid">
+add Employee</button>

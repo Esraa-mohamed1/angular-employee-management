@@ -1,0 +1,22 @@
+<h2>employees</h2>
+
+<a routerLink ="/add-emp">
+  + update employee
+</a>
+
+
+@if(employee$ | async ; as employees){
+  @if (employees.length === 0){
+    <p> no employees found </p>
+  }
+  @else{
+    @for(employee of employees; track employee.id){
+      <div class="employee-card">
+      <h3>
+        {{employee.firstName}}
+      {{employee.lastName}}  
+      </h3>
+      <p> email:{{employee.email}}</p></div>
+    }
+  }
+}

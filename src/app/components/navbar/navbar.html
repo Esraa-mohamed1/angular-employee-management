@@ -1,0 +1,24 @@
+<!-- Navbar HTML -->
+<!-- routerLink بيوجه المستخدم لصفحة معينة بدون reload -->
+<!-- routerLinkActive بيضيف class "active" للرابط النشط -->
+<nav class="navbar">
+  <div class="navbar-brand">
+    <a routerLink="/employees">
+      <span class="logo-icon">👥</span>
+      Employee Manager
+    </a>
+  </div>
+
+  <div class="navbar-links">
+    <a routerLink="/employees"
+       routerLinkActive="active"
+       [routerLinkActiveOptions]="{exact: true}">
+      📋 Employees
+    </a>
+
+    <a routerLink="/add-employee"
+       routerLinkActive="active">
+      ➕ Add Employee
+    </a>
+  </div>
+</nav>
