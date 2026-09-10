@@ -1,115 +1,55 @@
-<!-- <h2>Add Employee</h2>
-<form #employeeForm="ngForm"
-(ngSubmit)="submit(employeeForm)">
-
-<div>
-  <label > firstname</label>
-  <input 
-  type="text"
-  name="firstname"
-  [(ngModel)]="empolyee.firstName"
-  required
-  minlength="2"
-  #firstname="ngModel"
-</div>
-
-@if(
-  firstName.invalid && firstName.touched
-)
-{<small>first Name is required and must at least 2 letters </small>}
-
-
-
-//lastname
-<div>
-  <label > lastname</label>
-  <input 
-  type="text"
-  name="lastname"
-  [(ngModel)]="empolyee.lastname"
-  required
-  minlength="2"
-  #lastname="ngModel"
-</div>
-
-@if(
-  lastname.invalid && lastname.touched
-)
-{<small>first Name is required and must at least 2 letters </small>}
-
-//email
-
-<div>
-  <label > email</label>
-  <input 
-  type="email"
-  name="email"
-  [(ngModel)]="empolyee.email"
-  required
-  email
-  #email="ngModel"
-</div>
-
-@if(
-  firstName.invalid && firstName.touched
-)
-{<small>first Name is required and must at least 2 letters </small>}
-
-
-//phone
-
-<div>
-  <label > firstname</label>
-  <input 
-  type="text"
-  name="phone"
-  [(ngModel)]="empolyee.phone"
-  required
-  pattern="^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$"
-  #phone="ngModel"
-</div>
-
-@if(
-  phone.invalid && phone.touched
-)
-{<small>first N
+<div class="form-container">
+  <h2>Add New Employee</h2>
   
-  ame is required and must at least 2 letters </small>}
+  <form [formGroup]="employeeForm" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input id="firstName" type="text" formControlName="firstName" placeholder="Enter first name">
+      @if (employeeForm.controls.firstName.invalid && employeeForm.controls.firstName.touched) {
+        <small class="error-message">First Name is required and must be at least 2 characters.</small>
+      }
+    </div>
 
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input id="lastName" type="text" formControlName="lastName" placeholder="Enter last name">
+      @if (employeeForm.controls.lastName.invalid && employeeForm.controls.lastName.touched) {
+        <small class="error-message">Last Name is required and must be at least 2 characters.</small>
+      }
+    </div>
 
-<button 
-type="submit"
-[disabled]="employeeForm.invalid">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email" placeholder="e.g. name@company.com">
+      @if (employeeForm.controls.email.invalid && employeeForm.controls.email.touched) {
+        <small class="error-message">Please enter a valid email address.</small>
+      }
+    </div>
 
-add Employee
-</button>
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input id="phone" type="text" formControlName="phone" placeholder="e.g. 01012345678">
+      @if (employeeForm.controls.phone.invalid && employeeForm.controls.phone.touched) {
+        <small class="error-message">Phone must be a valid 11-digit number starting with 010/011/012/015.</small>
+      }
+    </div>
 
+    <div class="form-group">
+      <label for="department">Department</label>
+      <input id="department" type="text" formControlName="department" placeholder="e.g. Engineering">
+      @if (employeeForm.controls.department.invalid && employeeForm.controls.department.touched) {
+        <small class="error-message">Department is required.</small>
+      }
+    </div>
 
+    <div class="form-group">
+      <label for="salary">Salary</label>
+      <input id="salary" type="number" formControlName="salary" placeholder="e.g. 8000">
+      @if (employeeForm.controls.salary.invalid && employeeForm.controls.salary.touched) {
+        <small class="error-message">Salary is required and must be at least 5000.</small>
+      }
+    </div>
 
-
-
-</form> -->
-
-
-
-
-
-
-<h2>Add Employee</h2>
-<form [formGroup]="employeeForm"
-(ngSubmit)="submit()">
-
-
-
-<input
-type="text"
-formControllName="firstName">
-
- @if (employeeForm.controls.firstName.invalid &&employeeForm.controls.firstName.touched)
-{<small>first Name is required and must at least 2 letters </small>}
-
-
-<button
-type="submit"
-[disabled]="employeeForm.invalid">
-add Employee</button>
+    <button type="submit" [disabled]="employeeForm.invalid">Add Employee</button>
+  </form>
+</div>

@@ -8,30 +8,39 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class EmployeeService {
-  private http =inject(HttpClient);
+  private http = inject(HttpClient);
 
-  private apiUrl='https://api.github.com/user';
-
-  getemployee():Observable<Employee[]>{
-
-    return this.http.get<Employee[]>(
-    this.apiUrl);
+  private apiUrl = 'https://jsonplaceholder.typicode.com/users';
+  getEmployees(): Observable<Employee[]> {
+    return this.http.get<Employee[]>(this.apiUrl);
   }
 
-  getemployeeId(id:number):Observable<Employee>{
-    return this.http.get<Employee>(
-    `${this.apiUrl}/${id}`);
+  // Alias for 
+  getemployee(): Observable<Employee[]> {
+    return this.getEmployees();
   }
 
+  getEmployeeById(id: number): Observable<Employee> {
+    return this.http.get<Employee>(`${this.apiUrl}/${id}`);
+  }
 
-  
+  getemployeeId(id: number): Observable<Employee> {
+    return this.getEmployeeById(id);
+  }
 
-updateemployee(id:number,employee:Omit<Employee,'id'>):Observable<Employee>{
+  addEmployee(employee: Omit<Employee, 'id'>): Observable<Employee> {
+    return this.http.post<Employee>(this.apiUrl, employee);
+  }
 
-  return this.http.put<Employee>(
-    `${this.apiUrl}/${id}`, employee
-  );
-}
+  updateEmployee(id: number, employee: Omit<Employee, 'id'>): Observable<Employee> {
+    return this.http.put<Employee>(`${this.apiUrl}/${id}`, employee);
+  }
 
+  updateemployee(id: number, employee: Omit<Employee, 'id'>): Observable<Employee> {
+    return this.updateEmployee(id, employee);
+  }
 
+  deleteEmployee(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }

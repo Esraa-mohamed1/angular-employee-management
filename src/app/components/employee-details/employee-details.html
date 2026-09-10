@@ -1,0 +1,32 @@
+<div class="details-container">
+  @if (employee$ | async; as employee) {
+    <div class="details-card" appHighlight>
+      <h2>{{ employee.firstName }} {{ employee.lastName }}</h2>
+      <div class="info-row">
+        <span class="label">ID:</span>
+        <span class="value">{{ employee.id }}</span>
+      </div>
+      <div class="info-row">
+        <span class="label">Email:</span>
+        <span class="value">{{ employee.email }}</span>
+      </div>
+      <div class="info-row">
+        <span class="label">Phone:</span>
+        <span class="value">{{ employee.phone }}</span>
+      </div>
+      <div class="info-row">
+        <span class="label">Department:</span>
+        <span class="value">{{ employee.department }}</span>
+      </div>
+      <div class="info-row">
+        <span class="label">Salary:</span>
+        <span class="value">${{ employee.salary }}</span>
+      </div>
+      
+      <a routerLink="/employees" class="back-btn">← Back to Employees</a>
+    </div>
+  } @else {
+    <p class="loading">Loading employee details...</p>
+    <a routerLink="/employees" class="back-btn">← Back to Employees</a>
+  }
+</div>
